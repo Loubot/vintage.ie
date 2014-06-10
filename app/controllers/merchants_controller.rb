@@ -16,6 +16,7 @@ class MerchantsController < ApplicationController
 
 	def new
 		@merchant = Merchant.new
+		flash[:notice]= params
 	end
 
 	def edit
@@ -35,11 +36,11 @@ class MerchantsController < ApplicationController
 
 	def update
 		@merchant = Merchant.new
-		if @merchant.update_params(merchant_params)
+		if @merchant.update_attributes(merchant_params)
 			flash.now[:success] = "Merchant successfully updated"
 			redirect_to edit_merchant_path(@merchant)
 		else
-			flash[:danger] = "Couldn't update merchant #{merchant.errors.full_messages}"
+			flash[:danger] = "Couldn't update merchant #{@merchant.errors.full_messages}"
 			render 'new'
 		end
 	end

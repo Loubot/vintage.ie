@@ -16,6 +16,7 @@
 
 class Merchant < ActiveRecord::Base
 	has_many :photos, as: :imageable
+	has_many :shops
 	validates :email, confirmation: true, uniqueness: { case_sensitive: false }
   validates :email_confirmation, presence: true
 end

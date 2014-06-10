@@ -20,6 +20,7 @@ class ShopsController < ApplicationController
 
 	def new
 		@shop = Shop.new
+		@shop.merchant_id = params[:merchant_id]
 	end
 
 	def create

@@ -5,6 +5,7 @@ class CreateItems < ActiveRecord::Migration
       t.text :description
       t.string :name
       t.float :size
+      t.integer :shop_id
 
       t.timestamps
     end

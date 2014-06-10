@@ -14,4 +14,6 @@
 
 class Shop < ActiveRecord::Base
 	has_many :photos, as: :imageable
+	has_many :items
+	belongs_to :merchant
 end
