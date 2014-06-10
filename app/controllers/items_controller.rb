@@ -1,9 +1,5 @@
 class ItemsController < ApplicationController
-	before_action :get_item, only: [:show, :update, :destroy, :edit]
-
-	def get_item
-		@item = Item.find(params[:id])
-	end
+	
 
 	def index
 		@items = Item.all
@@ -29,8 +25,8 @@ class ItemsController < ApplicationController
 		@item = Item.new(item_params)
 		@shop = Shop.find(item_params[:shop_id])
 		if @item.save
-			flash[:success] = @shop.id
-			redirect_to :back
+			flash[:success] = 'Item created succesfully'
+			redirect_to edit_shop_item_path(@shop, @item)
 		else
 			flash[:danger] = "Couldn't create item #{@item.errors.full_messages}"
 			render 'new'
@@ -38,9 +34,11 @@ class ItemsController < ApplicationController
 	end
 
 	def update
-		if @item.update_attributes
-			flash[:success] = "item updated succesfully"
-			render 'edit'
+		@item = Item.find(params[:id])
+		@shop = Shop.find(item_params[:shop_id])
+		if @item.update_attributes(item_params)
+			flash[:success] = "Item updated succesfully"
+			redirect_to edit_shop_item_path(@shop, @item)
 		else
 			flash[:danger] = "Couldn't update item #{@item.errors.full_messages}"
 			render 'edit'
