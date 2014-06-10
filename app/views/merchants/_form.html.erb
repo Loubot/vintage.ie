@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row centered-form">
+    <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Tell us who you are <small>and welcome aboard</small></h3>
+        </div>
+          <div class="panel-body">
+
+              <%= form_for @merchant , html: { role: 'form'} do |f|%>
+                <div class="col-xs-11 col-sm-11 col-md-11">
+                  <div class="form-group">
+                      <%= f.text_field :first_name, class: "form-control input-sm", :placeholder => 'First name' %>
+                  </div>
+                </div>
+                <div class="col-xs-11 col-sm-11 col-md-11">
+                  <div class="form-group">
+                      <%= f.text_field :last_name, class: "form-control input-sm", :placeholder => 'Last Name' %>
+                  </div>
+                </div>
+                <div class="col-xs-11 col-sm-11 col-md-11">
+                  <div class="form-group">
+                      <%= f.email_field :email, class: "form-control input-sm", :placeholder => 'Email' %>
+                  </div>
+                </div>
+                <div class="col-xs-11 col-sm-11 col-md-11">
+                  <div class="form-group">
+                      <%= f.email_field :email_confirmation, class: "form-control input-sm", :placeholder => 'Email Confirmation' %>
+                  </div>
+                </div>
+                <div class="col-xs-11 col-sm-11 col-md-11">
+                  <div class="form-group">
+                      <%= f.text_area :address, class: "form-control input-sm", :placeholder => 'Address' %>
+                  </div>
+                </div>
+                <div class="col-xs-11 col-sm-11 col-md-11">
+                  <div class="form-group">
+                      <%= f.phone_field :phone, class: "form-control input-sm", :placeholder => 'Phone no.' %>
+                  </div>
+                </div>
+                  
+                                      
+                <%= f.submit class: 'btn btn-primary shop-signup-submit' %>
+              <% end %>
+
+          </div>
+            </div>
+          </div>
+      </div>
+</div>
+                       

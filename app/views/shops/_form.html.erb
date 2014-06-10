@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row centered-form">
+    <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Please add your shop to Vintage.ie <small>It's free!</small></h3>
+        </div>
+          <div class="panel-body">
+
+              <%= form_for @shop , html: { role: 'form'} do |f|%>
+                <div class="col-xs-11 col-sm-11 col-md-11">
+                  <div class="form-group">
+                      <%= f.text_field :name, class: "form-control input-sm", :placeholder => 'Shop Name' %>
+                  </div>
+                </div>
+                <div class="col-xs-11 col-sm-11 col-md-11">
+                  <div class="form-group">
+                      <%= f.text_area :address, class: "form-control input-sm", :placeholder => 'Address' %>
+                  </div>
+                </div>
+                <div class="col-xs-11 col-sm-11 col-md-11">
+                  <div class="form-group">
+                      <%= f.text_field :url, class: "form-control input-sm", :placeholder => 'www.etc.com' %>
+                  </div>
+                </div>   
+                <div class="col-xs-11 col-sm-11 col-md-11">
+                  <div class="form-group">
+                      <%= f.text_area :description, class: "form-control input-sm", :placeholder => 'Describe your shop' %>
+                  </div>
+                </div>                       
+                <%= f.submit class: 'btn btn-primary shop-signup-submit' %>
+              <% end %>
+
+          </div>
+            </div>
+          </div>
+      </div>
+</div>
