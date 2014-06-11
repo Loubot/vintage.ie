@@ -20,10 +20,16 @@ class PhotosController < ApplicationController
 
 	def create
 		@context = context
-		@photo = @context.photos.new(photo_params)
-		if @photo.save
-			flash[:success] = 'Hooray'
-			redirect_to edit_item_photo_path(@context.id, @photo.id)
+		@photo = @context.photos.new
+		@photo.photo = params[:file]
+
+		if @photo.save!
+		  respond_to do |format|
+		    format.json{ render :json => @photo }
+		    format.html do
+		    	redirect_to edit_item_photo_path(@context, @photo.id)
+		    end
+	  	end		
 		else
 			flash[:danger] = "Nope #{@photo.errors.full_messages}"
 			render 'new'
