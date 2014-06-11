@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     resources :items
     resources :photos
   end
+
+  resources :items do
+  	resources :photos
+  end
   
   root to: 'merchants#index'
 end

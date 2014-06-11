@@ -6,12 +6,13 @@ class ItemsController < ApplicationController
 	end
 
 	def show
-
+		@item = Item.find(params[:id])
 	end
 
 	def edit
 		@shop = Shop.find(params[:shop_id])
 		@item = Item.find(params[:id])
+		flash[:notice] = params
 	end
 
 	def new

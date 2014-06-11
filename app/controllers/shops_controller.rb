@@ -21,6 +21,7 @@ class ShopsController < ApplicationController
 	def new
 		@shop = Shop.new
 		@shop.merchant_id = params[:merchant_id]
+		flash[:notice] = params
 	end
 
 	def create
