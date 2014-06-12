@@ -18,10 +18,23 @@ class PhotosController < ApplicationController
 		@photo = @context.photos.new
 	end
 
-	def create
+	def create		
+		
 		@context = context
-		@photo = @context.photos.create(photo_params)
+		@photo = @context.photos.build(photo_params)
 
+		respond_to do |format|
+			if @photo.save
+				flash[:success] = "cool"
+				format.html { redirect_to edit_item_photo_path(@context, @photo) }
+				format.json { render json: @photo }
+			else
+				flash[:danger] = "Nope @photos.errors.full_messages"
+				format.html { redirect_to edit_item_photo_path(@context, @photo) }
+			end
+		end
+
+		
 	end
 
 	def update
@@ -61,7 +74,7 @@ class PhotosController < ApplicationController
 	def context
     if params[:shop_id]
       id = params[:shop_id]
-      Shop.find(params[:person_id])
+      Shop.find(params[:shop_id])
     else
       id = params[:item_id]
       Item.find(params[:item_id])

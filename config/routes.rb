@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   	resources :photos
   end
   
-  root to: 'merchants#index'
+  root to: 'merchants#new'
 end
