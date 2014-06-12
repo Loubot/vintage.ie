@@ -2,7 +2,7 @@
 $(function() {
    Dropzone.options.myAwesomeDropzone = { 
 
-  paramName: "file",
+  paramName: "photo[photo]",
   autoProcessQueue: false,
   uploadMultiple: false,
   parallelUploads: 1,
@@ -22,4 +22,13 @@ $(function() {
   }
 
 }
+});
+
+return myAwesomeDropzone.on("success", function(file, responseText) {
+  alert('b');
+    var imageUrl;
+    imageUrl = responseText.file_name.url;
+  });
+myAwesomeDropzone.on("totaluploadprogress", function(progress) {
+  document.querySelector("#total-progress .progress-bar").style.width = progress + "%";
 });

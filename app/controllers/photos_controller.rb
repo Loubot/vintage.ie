@@ -20,25 +20,37 @@ class PhotosController < ApplicationController
 
 	def create
 		@context = context
-		@photo = @context.photos.new
-		@photo.photo = params[:file]
+		@photo = @context.photos.create(photo_params)
 
-		if @photo.save!
-		  respond_to do |format|
-		    format.json{ render :json => @photo }
-		    format.html do
-		    	redirect_to edit_item_photo_path(@context, @photo.id)
-		    end
-	  	end		
+	end
+
+	def update
+		@context = context 
+		@photo = @context.photos.find(params[:id])
+		if @photo.update_attributes(photo_params)
+			flash[:success] = "Photo updated"
+			redirect_to edit_item_photo_path(@context, @photo)
 		else
-			flash[:danger] = "Nope #{@photo.errors.full_messages}"
-			render 'new'
+			flash[:danger] = "Couldn't update #{@photo.errors.full_messages}"
+			render 'edit'
 		end
 	end
 
 	def edit
 		@context = context
 		@photo = @context.photos.find(params[:id])
+	end
+
+	def destroy
+		@context = context
+		@photo = @context.photos.find(params[:id])
+		if @photo.destroy
+			flash[:success] = "Photo deleted"
+			redirect_to item_photos_path(@context)
+		else
+			flash[:danger] = "Could not delete photo #{@photo.errors.full_messages}"
+			render 'edit'
+		end
 	end
 
 	private
