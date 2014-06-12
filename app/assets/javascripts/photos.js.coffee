@@ -9,7 +9,8 @@ jQuery ->
 
     edit_form.on("success", (file) ->
       console.log("successfully uploaded file ")
-      $(file.previewTemplate).append('<span class="server_file">+hello+</span>')
+      $('.dropzone .dz-preview .dz-details,
+.dropzone-previews .dz-preview .dz-details').css('width','10px;')
     )
 
     edit_form.on("error", (file) ->

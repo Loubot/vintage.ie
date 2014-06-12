@@ -34,7 +34,6 @@ gem 'thin'
 
 gem 'carrierwave'
 
-gem 'dropzonejs-rails'
 
 gem 'tzinfo-data'
 
