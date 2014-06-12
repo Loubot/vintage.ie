@@ -1,21 +1,20 @@
 
- <div>
-<p class="size" data-dz-size></p>
-<div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-<div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
-</div>
-</div>
+<div>
 <%= form_for [@context, @photo], remote: true, :html => {id:"my-awesome-dropzone",class:"dropzone"} do |f| %>
   
   <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-  <p>
-    <%= f.file_field :photo %>
-  </p>
   
   
+  <div class="fallback">
+      <%= f.file_field :photo %>
+  </div>
+  <div>
+    <b>Drag and Drop an Image File here.</b>
+    &nbsp;<br/>
+    &nbsp;<br/>
+    &nbsp;
+  </div>
+  <button  id="edit_form_save_button">Save</button>
 <% end %>
-<button id="edit_form_save_button">Save</button>
-<%= image_tag @photo.photo.url %>
-<%= link_to 'Remove', [@context, @photo], confirm: 'Are you sure', method: :delete %>
 
-<div class="bla"></div>
+</div>

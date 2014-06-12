@@ -1,5 +1,5 @@
 <%= @item.name %>
 
 <% @photos.each do |photo| %>
-	<%= image_tag photo.photo.url %>
+	<%= image_tag photo.photo.url, alt: "holder.js/300x200" %>
 <% end %>

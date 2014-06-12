@@ -20,9 +20,11 @@ class ItemsController < ApplicationController
 	end
 
 	def new
-		@shop = Shop.find(params[:shop_id])
-		@item = Item.new
+		@context = Shop.find(params[:shop_id])
+		@item = @context.items.new
+		@photo = @context.photos.new
 		flash[:notice] = params
+		
 		
 	end
 

@@ -4,6 +4,7 @@ jQuery ->
     edit_form = new Dropzone("#my-awesome-dropzone", {
         paramName: "photo[photo]"
         enqueueForUpload: false
+        addRemoveLinks: true
     })
 
     edit_form.on("success", (file) ->

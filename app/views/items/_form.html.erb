@@ -11,7 +11,7 @@
         </div>
           <div class="panel-body">
 
-              <%= form_for [@shop, @item]  do |f| %>
+              <%= form_for [@context, @item], html: { id: 'item_edit' } do |f| %>
                 
                 <div class="col-xs-11 col-sm-11 col-md-11">
                   <div class="form-group">
@@ -33,11 +33,30 @@
                       <%= f.number_field :price, class: "form-control input-sm", :placeholder => 'How much?' %>
                   </div>
                 </div>
-                <%= f.hidden_field :shop_id, value: @shop.id %>
+                <%= f.hidden_field :shop_id, value: @context.id %>
                 
                 <%= f.submit  class: 'btn btn-primary shop-signup-submit' %>
               <% end %>
-
+              <%= form_for [@context, @photo], remote: true, :html => {id:"my-awesome-dropzone",class:"dropzone"} do |f| %>
+  
+                <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+                <div class="col-xs-11 col-sm-11 col-md-11">
+                  <div class="form-group fallback">
+                       <%= f.file_field :photo %>
+                  </div>
+                </div>
+                
+                <div class="col-xs-11 col-sm-11 col-md-11">
+                  <div class="form-group fallback">
+                       
+                        &nbsp;<br/>
+                        &nbsp;<br/>
+                        &nbsp;
+                  </div>
+                </div>
+                
+                
+              <% end %>
           </div>
             </div>
           </div>
