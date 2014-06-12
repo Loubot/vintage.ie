@@ -8,8 +8,8 @@ jQuery ->
     })
 
     edit_form.on("success", (file) ->
-      console.log("successfully uploaded file")
-      $('#status_message').html("<b style='color: green;'>Student Saved</b>")
+      console.log("successfully uploaded file ")
+      $(file.previewTemplate).append('<span class="server_file">+hello+</span>')
     )
 
     edit_form.on("error", (file) ->

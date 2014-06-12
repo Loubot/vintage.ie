@@ -59,7 +59,7 @@ class PhotosController < ApplicationController
 		@photo = @context.photos.find(params[:id])
 		if @photo.destroy
 			flash[:success] = "Photo deleted"
-			redirect_to item_photos_path(@context)
+			redirect_to :back
 		else
 			flash[:danger] = "Could not delete photo #{@photo.errors.full_messages}"
 			render 'edit'
