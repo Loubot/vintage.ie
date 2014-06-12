@@ -1,20 +1,21 @@
 
-<div>
-<%= form_for [@context, @photo], remote: true, :html => {id:"my-awesome-dropzone",class:"dropzone"} do |f| %>
-  
-  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-  
-  
-  <div class="fallback">
-      <%= f.file_field :photo %>
-  </div>
-  <div>
-    <b>Drag and Drop an Image File here.</b>
-    &nbsp;<br/>
-    &nbsp;<br/>
-    &nbsp;
-  </div>
-  <button  id="edit_form_save_button">Save</button>
-<% end %>
-
+<div class="col-xs-11 col-sm-11 col-md-11">
+  <div class="form-group">
+		<%= form_for [@context, @photo], remote: true, :html => {id:"my-awesome-dropzone",class:"dropzone"} do |f| %>
+		  
+		  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+		  
+		  
+		  <div class="fallback">
+		      <%= f.file_field :photo %>
+		  </div>
+		  <div>
+		    <b>Drag and Drop an Image File here.</b>
+		    &nbsp;<br/>
+		    &nbsp;<br/>
+		    &nbsp;
+		  </div>
+		  <button  id="edit_form_save_button">Save</button>
+		<% end %>
+	</div>
 </div>

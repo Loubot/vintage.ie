@@ -24,6 +24,7 @@ class ItemsController < ApplicationController
 		@item = @context.items.new
 		@photo = @context.photos.new
 		flash[:notice] = params
+		@photos = @context.photos.all
 		
 		
 	end

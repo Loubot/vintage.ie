@@ -5,12 +5,12 @@ jQuery ->
         paramName: "photo[photo]"
         enqueueForUpload: false
         addRemoveLinks: true
+        
     })
 
     edit_form.on("success", (file) ->
       console.log("successfully uploaded file ")
-      $('.dropzone .dz-preview .dz-details,
-.dropzone-previews .dz-preview .dz-details').css('width','10px;')
+      location.reload()
     )
 
     edit_form.on("error", (file) ->
