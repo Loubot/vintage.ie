@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-	
+	before_action :authenticate_merchant!, only: [:update, :create, :new, :edit, :destroy]
 
 	def index
 		@items = Item.all

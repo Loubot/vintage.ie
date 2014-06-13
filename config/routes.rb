@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :merchants
+  
   resources :merchants do
     resources :shops
     resources :photos
@@ -12,5 +14,5 @@ Rails.application.routes.draw do
   	resources :photos
   end
   
-  root to: 'merchants#new'
+  root to: 'merchants#edit'
 end

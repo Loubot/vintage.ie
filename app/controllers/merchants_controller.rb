@@ -1,6 +1,6 @@
 class MerchantsController < ApplicationController
-
-	before_action :get_merchant, only: [:show, :edit, :destroy]
+	before_action :authenticate_merchant!, only: [:update, :create, :new, :edit, :destroy]
+	before_action :get_merchant, only: [:show, :destroy]
 
 	def get_merchant
 		@merchant = Merchant.find(params[:id])
@@ -20,14 +20,14 @@ class MerchantsController < ApplicationController
 	end
 
 	def edit
-		
+		@merchant = Merchant.find(current_merchant.id)
 	end
 
 	def create
 		@merchant = Merchant.create(merchant_params)
 		if @merchant.save
 			flash.now[:success] = 'Merchant created successfully'
-			redirect_to new_merchant_shop_path(@merchant)
+			redirect_to new_merchant_shop_path(current_merchant.id)
 		else
 			flash[:danger] = "Failed to create Merchant #{@merchant.errors.full_messages}"
 			render 'new'
@@ -35,10 +35,10 @@ class MerchantsController < ApplicationController
 	end
 
 	def update
-		@merchant = Merchant.new
-		if @merchant.update_attributes(merchant_params)
+		@merchant = Merchant.find(current_merchant.id)
+		if @merchant.update_without_password(merchant_params)
 			flash.now[:success] = "Merchant successfully updated"
-			redirect_to edit_merchant_path(@merchant)
+			redirect_to new_merchant_shop_path(current_merchant.id)
 		else
 			flash[:danger] = "Couldn't update merchant #{@merchant.errors.full_messages}"
 			render 'new'

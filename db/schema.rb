@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140610204052) do
+ActiveRecord::Schema.define(version: 20140613145931) do
 
   create_table "items", force: true do |t|
     t.decimal  "price",       precision: 8, scale: 2
@@ -26,14 +26,26 @@ ActiveRecord::Schema.define(version: 20140610204052) do
   create_table "merchants", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "phone"
+    t.string   "phone"
     t.string   "logo"
     t.string   "url"
     t.text     "address"
     t.text     "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
+
+  add_index "merchants", ["email"], name: "index_merchants_on_email", unique: true
+  add_index "merchants", ["reset_password_token"], name: "index_merchants_on_reset_password_token", unique: true
 
   create_table "photos", force: true do |t|
     t.string   "name"

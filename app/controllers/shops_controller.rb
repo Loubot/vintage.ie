@@ -1,5 +1,5 @@
 class ShopsController < ApplicationController
-
+	before_action :authenticate_merchant!, only: [:update, :create, :new, :edit, :destroy]
 	before_action :get_shop, only: [:show, :update, :destroy, :edit]
 
 	def get_shop
