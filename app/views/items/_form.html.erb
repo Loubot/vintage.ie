@@ -1,6 +1,24 @@
-<div class="container">
-  <div class="row centered-form">
-    <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+<div class="container">   
+  <div class="col-md-6 photo_placholder">     
+    <%= form_for [@item, @photo], remote: true, :html => {id:"my-awesome-dropzone", class:'dropzone' } do |f| %>
+        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+          <div class="form-group fallback">
+               <%= f.file_field :photo %>
+          </div>
+        </div>
+        
+        <div class="dz-message " data-dz-message>
+          <span class="col-xs-5 col-sm-5 col-md-5">Drag files or click here</span></div>
+        <div class="fallback">                       
+        </div> 
+        
+    <% end %>        
+    
+                      
+    </div> <!-- end of col-md4 -->   
+    <div class="col-md-1"><button id="edit_form_save_button" class='btn btn-success'>Upload</button></div>
+    <div class="col-md-4 pull-right">
       <div class="panel panel-default">
         <div class="panel-heading">
           <% if @item.new_record? %>
@@ -9,39 +27,52 @@
             <h3 class='panel-title'>Update your item<small>It's free!</small></h3>
           <% end %>
         </div>
-          <div class="panel-body">
-
-              <%= form_for [@shop, @item]  do |f| %>
-                
-                <div class="col-xs-11 col-sm-11 col-md-11">
-                  <div class="form-group">
-                      <%= f.text_field :name, class: "form-control input-sm", :placeholder => 'Item Name' %>
-                  </div>
-                </div>
-                <div class="col-xs-11 col-sm-11 col-md-11">
-                  <div class="form-group">
-                      Size: <%= f.select :size, (4..32).step(0.5).to_a %>
-                  </div>
-                </div>                
-                <div class="col-xs-11 col-sm-11 col-md-11">
-                  <div class="form-group">
-                      <%= f.text_area :description, class: "form-control input-sm", :placeholder => 'Description of your item' %>
-                  </div>
-                </div>
-                <div class="col-xs-11 col-sm-11 col-md-11">
-                  <div class="form-group">
-                      <%= f.number_field :price, class: "form-control input-sm", :placeholder => 'How much?' %>
-                  </div>
-                </div>
-                <%= f.hidden_field :shop_id, value: @shop.id %>
-                
-                <%= f.submit  class: 'btn btn-primary shop-signup-submit' %>
-              <% end %>
-
-          </div>
+        <div class="panel-body">
+          <%= form_for [@context, @item], html: { id: 'item_edit' } do |f| %>
+              
+            <div class="col-xs-11 col-sm-11 col-md-11">
+              <div class="form-group">
+                  <%= f.text_field :name, class: "form-control input-sm", :placeholder => 'Item Name' %>
+              </div>
             </div>
-          </div>
+            <div class="col-xs-11 col-sm-11 col-md-11">
+              <div class="form-group">
+                  Size: <%= f.select :size, (4..32).step(0.5).to_a %>
+              </div>
+            </div>                
+            <div class="col-xs-11 col-sm-11 col-md-11">
+              <div class="form-group">
+                  <%= f.text_area :description, class: "form-control input-sm", :placeholder => 'Description of your item' %>
+              </div>
+            </div>
+            <div class="col-xs-11 col-sm-11 col-md-11">
+              <div class="form-group">
+                  <%= f.number_field :price, class: "form-control input-sm", :placeholder => 'How much?' %>
+              </div>
+            </div>
+            <%= f.hidden_field :shop_id, value: @context.id %>
+            
+            <%= f.submit  class: 'btn btn-primary shop-signup-submit' %>
+          <% end %>
+          
+        </div>
       </div>
-</div>
+    </div>  
 
+
+  </div> <!-- end of row container -->
+<div class="container">
+  <div class="row ">
+  <div class="col-md-2"></div>
+  <div class="col-md-2 preview_photo"></div>
+
+</div>
+  <div class="row">      
+    <% if !@photos.empty? %>
+      <%= render @photos %>
+    <% end %>    
+  </div> <!-- end of row -->
+</div>
+    
+      
             

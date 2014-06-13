@@ -28,17 +28,17 @@ class ShopsController < ApplicationController
 		@shop = Shop.new(shop_params)
 		if @shop.save
 			flash[:success] = "Shop created succesfully"
-			redirect_to edit_shop_path(@shop)
+			redirect_to new_shop_item_path(@shop)
 		else
 			flash[:danger] = "Couldn't create shop #{@shop.errors.full_messages}"
-			render 'new'
+			redirect_to new_shop_item_path(@shop)
 		end
 	end
 
 	def update
-		if @shop.update_attributes
+		if @shop.update_attributes(shop_params)
 			flash[:success] = "Shop updated succesfully"
-			render 'edit'
+			redirect_to new_shop_item_path(@shop)
 		else
 			flash[:danger] = "Couldn't update shop #{@shop.errors.full_messages}"
 			render 'edit'
