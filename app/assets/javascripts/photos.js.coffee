@@ -3,8 +3,10 @@ jQuery ->
   if $('#my-awesome-dropzone').length > 0
     edit_form = new Dropzone("#my-awesome-dropzone", {
         paramName: "photo[photo]"
-        enqueueForUpload: false
+        #enqueueForUpload: false
         addRemoveLinks: true
+        autoProcessQueue: false
+        previewsContainer: ".preview_photo"
         
     })
 
@@ -21,10 +23,8 @@ jQuery ->
     $("#edit_form_save_button").click( ->
       console.log("Save Button Clicked")
       if edit_form.files.length > 0
-        alert 'a'
         console.log("found file to process")
-        file = edit_form.files[0]
-        edit_form.filesQueue.push(file);
+        
         edit_form.processQueue();
       
     )

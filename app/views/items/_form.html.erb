@@ -1,5 +1,29 @@
 <div class="container">  
-    <div class="col-md-4">
+    
+     
+      
+  
+    <div class="col-md-4 photo_placholder">
+       
+      <%= form_for [@context, @photo], remote: true, :html => {id:"my-awesome-dropzone", class:'dropzone' } do |f| %>
+        
+          <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+          <div class="col-xs-11 col-sm-11 col-md-11">
+            <div class="form-group fallback">
+                 <%= f.file_field :photo %>
+            </div>
+          </div>
+          
+          <div class="dz-message" data-dz-message><span>Drag files or click here</span></div>
+          <div class="form-group fallback">                       
+          </div> 
+          
+      <% end %>        
+    
+                      
+    </div> <!-- end of col-md4 -->   
+    <div class="col-md-1"><button id="edit_form_save_button" class='btn btn-success'>Upload</button></div>
+    <div class="col-md-4 pull-right">
       <div class="panel panel-default">
         <div class="panel-heading">
           <% if @item.new_record? %>
@@ -44,34 +68,11 @@
           </div>
         </div>
       </div>
-    </div>
-     
-      
-  
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">You can edit your item here <small>yada</small></h3>
-        </div>
-          <div class="panel-body photo">  
-            <%= form_for [@context, @photo], remote: true, :html => {id:"my-awesome-dropzone", class:'dropzone' } do |f| %>
-              
-                <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-                <div class="col-xs-11 col-sm-11 col-md-11">
-                  <div class="form-group fallback">
-                       <%= f.file_field :photo %>
-                  </div>
-                </div>
-                
-                <div class="dz-message" data-dz-message><span>Drag files or click here</span></div>
-                <div class="form-group fallback">                       
-                </div> 
-                <button class='btn btn-success'>Upload</button>
-            <% end %>        
-          </div> <!-- end of panel-body -->
-        </div> <!-- end of panel panel-default -->            
-      </div> <!-- end of col-md4 -->          
+    </div>  
+
+
   </div> <!-- end of row container -->
+    <div class="row">
       <div class="uploaded_photos">
         <div class="row bla">  
             <% if !@photos.empty? %>
@@ -79,6 +80,7 @@
             <% end %>
         </div> <!-- end of row -->
       </div> <!-- end of upload_photos -->
-      
+    </div> <!-- end of row -->
+    <div class="row preview_photo"></div>
       
             
