@@ -1,24 +1,19 @@
-<div class="container">  
-    
-     
-      
-  
-    <div class="col-md-4 photo_placholder">
-       
-      <%= form_for [@context, @photo], remote: true, :html => {id:"my-awesome-dropzone", class:'dropzone' } do |f| %>
-        
-          <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-          <div class="col-xs-11 col-sm-11 col-md-11">
-            <div class="form-group fallback">
-                 <%= f.file_field :photo %>
-            </div>
+<div class="container">   
+  <div class="col-md-6 photo_placholder">     
+    <%= form_for [@item, @photo], remote: true, :html => {id:"my-awesome-dropzone", class:'dropzone' } do |f| %>
+        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+          <div class="form-group fallback">
+               <%= f.file_field :photo %>
           </div>
-          
-          <div class="dz-message" data-dz-message><span>Drag files or click here</span></div>
-          <div class="form-group fallback">                       
-          </div> 
-          
-      <% end %>        
+        </div>
+        
+        <div class="dz-message " data-dz-message>
+          <span class="col-xs-5 col-sm-5 col-md-5">Drag files or click here</span></div>
+        <div class="fallback">                       
+        </div> 
+        
+    <% end %>        
     
                       
     </div> <!-- end of col-md4 -->   
@@ -59,28 +54,25 @@
             
             <%= f.submit  class: 'btn btn-primary shop-signup-submit' %>
           <% end %>
-          <div class="row centered-form">
-            <div class="col-xs-11 col-sm-11 col-md-11">
-              <div class="form-group">
-                
-              </div>
-            </div>
-          </div>
+          
         </div>
       </div>
     </div>  
 
 
   </div> <!-- end of row container -->
-    <div class="row">
-      <div class="uploaded_photos">
-        <div class="row bla">  
-            <% if !@photos.empty? %>
-              <%= render @photos %>
-            <% end %>
-        </div> <!-- end of row -->
-      </div> <!-- end of upload_photos -->
-    </div> <!-- end of row -->
-    <div class="row preview_photo"></div>
+<div class="container">
+  <div class="row ">
+  <div class="col-md-2"></div>
+  <div class="col-md-2 preview_photo"></div>
+
+</div>
+  <div class="row">      
+    <% if !@photos.empty? %>
+      <%= render @photos %>
+    <% end %>    
+  </div> <!-- end of row -->
+</div>
+    
       
             

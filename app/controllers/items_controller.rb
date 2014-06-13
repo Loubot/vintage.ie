@@ -14,8 +14,8 @@ class ItemsController < ApplicationController
 		@shop = Shop.find(params[:shop_id])
 		@item = Item.find(params[:id])
 		@context = Shop.find(params[:shop_id])
-		@photos = @context.photos.all
-		@photo = @context.photos.new
+		@photos = @item.photos.all
+		@photo = @item.photos.new
 		flash[:notice] = params
 	end
 

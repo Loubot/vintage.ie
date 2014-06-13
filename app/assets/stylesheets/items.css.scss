@@ -3,7 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .photo_placholder{
 	background-image: url('lama.png');
-	height: 300px;
+	height:auto;
+	min-height: 292px;
 }
 
 .dz-message{

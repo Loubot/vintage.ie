@@ -6,12 +6,13 @@ jQuery ->
         #enqueueForUpload: false
         addRemoveLinks: true
         autoProcessQueue: false
-        previewsContainer: ".preview_photo"
+        parallelUploads: 10
         
     })
 
     edit_form.on("success", (file) ->
       console.log("successfully uploaded file ")
+      $('body').append(file);
       location.reload()
     )
 
