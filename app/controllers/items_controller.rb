@@ -2,12 +2,15 @@ class ItemsController < ApplicationController
 	before_action :authenticate_merchant!, only: [:update, :create, :new, :edit, :destroy]
 
 	def index
+		@params = params
 		@items = Item.all
+		
+		@shop_items_photos = @shop.items.photos
 	end
 
 	def show
 		@item = Item.find(params[:id])
-		@photos = @item.photos
+		@item_photos = @item.photos
 	end
 
 	def edit
