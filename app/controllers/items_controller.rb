@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
 		@params = params
 		@items = Item.all
 		
-		@shop_items_photos = @shop.items.photos
+		
 	end
 
 	def show

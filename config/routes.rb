@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :merchants
+  devise_for :merchants, controllers: { registrations: 'registrations' }
   
   resources :merchants do
     resources :shops
@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   end
   
   root to: 'merchants#edit'
+
 end

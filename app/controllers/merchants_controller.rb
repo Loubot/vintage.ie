@@ -37,16 +37,17 @@ class MerchantsController < ApplicationController
 	def update
 		@merchant = Merchant.find(current_merchant.id)
 		if @merchant.update_without_password(merchant_params)
-			flash.now[:success] = "Merchant successfully updated"
+			flash[:success] = "Merchant successfully updated"
 			redirect_to new_merchant_shop_path(current_merchant.id)
 		else
 			flash[:danger] = "Couldn't update merchant #{@merchant.errors.full_messages}"
-			render 'new'
+			render 'edit'
 		end
 	end
 
 	def destroy 
 		@merchant.destroy
+		sign_out current_merchant
 		redirect_to root_path
 	end
 

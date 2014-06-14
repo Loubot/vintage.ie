@@ -1,3 +1,7 @@
 <% @shops.each do |shop| %>
 	<%= link_to shop.name, shop %>
 <% end %>
+
+<% if @shops.empty? %>
+	<%= link_to 'Create a shop', new_merchant_shop_path(current_merchant.id) %>
+<% end %>

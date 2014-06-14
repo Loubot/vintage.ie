@@ -32,5 +32,10 @@ class RegistrationsController < Devise::RegistrationsController
     merchant.email != params[:merchant][:email] ||
       params[:merchant][:password].present?
   end
-end
+
+  protected
+
+    def after_update_path_for(resource)
+      merchants_shops_path(resource)
+    end
 end
