@@ -16,9 +16,10 @@
       <ul class="nav navbar-nav">
       	<% if current_merchant %>
         	<li ><%= link_to current_merchant.first_name, merchant_path(current_merchant) %></li>
-
         <% end %>
-        <li><a href="#">Link</a></li>
+        <% if (defined?(current_merchant.shops.empty))  %>
+          <li><%= link_to current_merchant.shops.first.name, shop_path(current_merchant.shops.first) %></a></li>
+        <% end %>
         
       </ul>
       

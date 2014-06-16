@@ -28,6 +28,6 @@ $(document).on 'page:change', ->
         
         edit_form.processQueue();      
     )
-  else if $('#merchant_show').length > 0
-     $('a[href="' + this.location.pathname + '"]').parent().addClass('active');
-     alert 'b'
+  
+  $('a[href="' + this.location.pathname + '"]').parent().addClass('active');
+     
