@@ -3,11 +3,11 @@ class ItemsController < ApplicationController
 
 	def index
 		@params = params
-<<<<<<< HEAD
+
 		@items = Item.all
 		
 		
-=======
+
 		@shop = Shop.find(params[:shop_id])
 		@items = @shop.items
 		mapped = nil
@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
 			end
 		end
 		@shop_items_photos = photos
->>>>>>> add_devies
+
 	end
 
 	def show
