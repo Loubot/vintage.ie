@@ -5,12 +5,12 @@ class ItemsController < ApplicationController
 		@params = params
 		@items = Item.all
 		
-		@shop_items_photos = @shop.items.photos
+		@shop_items_photos = @shop.items
 	end
 
 	def show
 		@item = Item.find(params[:id])
-		@item_photos = @item.photos
+		@photos = @item.photos
 	end
 
 	def edit
