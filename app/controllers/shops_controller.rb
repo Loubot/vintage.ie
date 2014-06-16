@@ -19,6 +19,7 @@ class ShopsController < ApplicationController
 	end
 
 	def new
+		redirect_to shop_items_path(current_merchant) unless current_merchant.shops.length == 0
 		@shop = Shop.new
 		@shop.merchant_id = params[:merchant_id]
 		flash[:notice] = params
