@@ -7,10 +7,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<% flash.each do |key, value| %>
-		<div class="alert alert-<%= key %>"><%= value %></div>
-	<% end %>
-<%= yield %>
+		<div class="page-header main_page_header">
+			<h1>Vintage.ie<small>bla bla</small></h1>
+		</div> <!-- end of main_page_header -->
+	<%= render 'partials/nav' %>
+	<div class="container-fluid">
+		<div class="col-md-3">
+			<%= render 'partials/left' %>
+		</div> <!-- end of col-md-3 -->
+		<div class="col-md-9">
+			<% flash.each do |key, value| %>
+				<div class="alert alert-<%= key %>"><%= value %></div>
+			<% end %>
+
+			<%= yield %>
+		</div> <!-- end of col-md-9 -->
+	</div> <!-- end of container-fluid -->
+
 
 </body>
 </html>

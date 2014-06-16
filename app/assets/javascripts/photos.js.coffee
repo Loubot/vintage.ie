@@ -1,4 +1,4 @@
-jQuery ->
+$(document).on 'page:change', ->
 
   if $('#my-awesome-dropzone').length > 0
     edit_form = new Dropzone("#my-awesome-dropzone", {
@@ -26,6 +26,8 @@ jQuery ->
       if edit_form.files.length > 0
         console.log("found file to process")
         
-        edit_form.processQueue();
-      
+        edit_form.processQueue();      
     )
+  else if $('#merchant_show').length > 0
+     $('a[href="' + this.location.pathname + '"]').parent().addClass('active');
+     alert 'b'

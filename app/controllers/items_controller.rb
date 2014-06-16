@@ -3,9 +3,16 @@ class ItemsController < ApplicationController
 
 	def index
 		@params = params
-		@items = Item.all
-		
-		@shop_items_photos = @shop.items
+		@shop = Shop.find(params[:shop_id])
+		@items = @shop.items
+		mapped = nil
+		photos = []
+		@items.each do |item|
+			item.photos.each do |photo|
+				photos << photo
+			end
+		end
+		@shop_items_photos = photos
 	end
 
 	def show
