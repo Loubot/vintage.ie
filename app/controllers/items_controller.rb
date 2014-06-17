@@ -13,6 +13,7 @@ class ItemsController < ApplicationController
 			end
 		end
 		@shop_items_photos = photos
+		
 	end
 
 	def show

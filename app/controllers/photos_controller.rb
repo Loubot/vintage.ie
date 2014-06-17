@@ -76,9 +76,11 @@ class PhotosController < ApplicationController
     if params[:shop_id]
       id = params[:shop_id]
       Shop.find(params[:shop_id])
-    else
+    elsif params[:item_id]    	
       id = params[:item_id]
       Item.find(params[:item_id])
+    else
+    	Merchant.find(params[:merchant_id])
     end
   end 
 end

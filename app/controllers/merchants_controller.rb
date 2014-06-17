@@ -21,6 +21,7 @@ class MerchantsController < ApplicationController
 
 	def edit
 		@merchant = Merchant.find(current_merchant.id)
+		@photo = @merchant.photos.new
 	end
 
 	def create
