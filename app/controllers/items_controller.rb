@@ -6,11 +6,13 @@ class ItemsController < ApplicationController
 			@params = params
 			@shop = Shop.find(params[:shop_id])
 			@items = @shop.items
-			@shop_items_photos = []
+			photos = []
 			@items.each do |item|
-				@shop_items_photos << item.photos.map { |photo| photo }				
+				item.photos.each do |photo|
+					photos << photo
+				end
 			end
-			
+			@shop_items_photos = photos
 		else
 			@shop_items_photos = Photo.all.where(imageable_type: 'Item')
 			@items = Item.all
