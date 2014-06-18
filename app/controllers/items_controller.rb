@@ -2,18 +2,19 @@ class ItemsController < ApplicationController
 	before_action :authenticate_merchant!, only: [:update, :create, :new, :edit, :destroy]
 
 	def index
-		@params = params
-		@shop = Shop.find(params[:shop_id])
-		@items = @shop.items
-		mapped = nil
-		photos = []
-		@items.each do |item|
-			item.photos.each do |photo|
-				photos << photo
+		if params[:shop_id]
+			@params = params
+			@shop = Shop.find(params[:shop_id])
+			@items = @shop.items
+			@shop_items_photos = []
+			@items.each do |item|
+				@shop_items_photos << item.photos.map { |photo| photo }				
 			end
+			
+		else
+			@shop_items_photos = Photo.all.where(imageable_type: 'Item')
+			@items = Item.all
 		end
-		@shop_items_photos = photos
-		
 	end
 
 	def show

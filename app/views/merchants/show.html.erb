@@ -2,7 +2,13 @@
 	<div class="col-md-3">
 		<%= image_tag @merchant.photos.first.photo.url(:thumb) %>
 	</div>
+	<div class="col-md-9">
+		<%= "#{@merchant.first_name} #{@merchant.last_name}" %><br>
+		<%= @merchant.phone %><br>
+		<%= @merchant.address %><br>
+		<%= @merchant.email %><br>
+		<%= link_to
+	</div>
 </div>
 
 <span id="merchant_show"></span>
-<%= "#{@merchant.first_name} #{@merchant.last_name}" %>

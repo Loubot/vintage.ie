@@ -6,7 +6,7 @@
     <a href="<%= photo.photo.url %>" data-lightbox="image-1" data-title="<%= photo.photo %>"><%= image_tag photo.photo.url(:thumb), size: "150x150" %></a>
     <div class="caption">
       <h3>Thumbnail label</h3>
-      <p>TODO!!</p>
+      <p><%= link_to 'View item', item_path(photo.imageable), class: 'btn btn-info' %></p>
       <!-- <p><a href="#" class="btn btn-primary" role="button">Button</a> </p> -->
     </div>
   </div>

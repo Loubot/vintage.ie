@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   	resources :photos
   end
   
-  root to: 'merchants#edit'
+  root to: 'merchants#edit', as: 'yourdetails'
 end

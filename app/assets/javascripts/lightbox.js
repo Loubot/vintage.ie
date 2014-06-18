@@ -7,7 +7,8 @@
  * - Attribution requires leaving author name, author link, and the license info intact
  */
 
-(function() {
+$(document).on('page:change', function() {
+
   // Use local alias
   var $ = jQuery;
 
@@ -408,4 +409,4 @@
     var lightbox = new Lightbox(options);
   });
 
-}).call(this);
+});
