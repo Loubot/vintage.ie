@@ -12,10 +12,10 @@
 		</div> <!-- end of main_page_header -->
 	<%= render 'partials/nav' %>
 	<div class="container-fluid">
-		<div class="col-md-3">
+		<div class="col-md-3 col-xs-3">
 			<%= render 'partials/left' %>
 		</div> <!-- end of col-md-3 -->
-		<div class="col-md-9">
+		<div class="col-md-9 col-xs-9">
 			<% flash.each do |key, value| %>
 				<div class="alert alert-<%= key %>"><%= value %></div>
 			<% end %>

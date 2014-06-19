@@ -1,5 +1,7 @@
 class PhotosController < ApplicationController
 	before_action :authenticate_merchant!, only: [:update, :create, :new, :edit, :destroy]
+	# before_action :correct_merchant?
+
 	def index
 		flash[:notice] = params
 		@context = context

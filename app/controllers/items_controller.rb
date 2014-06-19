@@ -20,6 +20,7 @@ class ItemsController < ApplicationController
 	end
 
 	def show
+		@params = params
 		@item = Item.find(params[:id])
 		@photos = @item.photos
 	end

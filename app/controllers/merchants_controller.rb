@@ -1,6 +1,12 @@
 class MerchantsController < ApplicationController
 	before_action :authenticate_merchant!, only: [:update, :create, :new, :edit, :destroy]
-	before_action :get_merchant, only: [:show, :destroy]
+	before_action :correct_merchant?, only: [:edit, :update, :destroy]
+
+	def correct_merchant?
+		if current_merchant != get_merchant
+			redirect_to edit_merchant_path(current_merchant)
+		end
+	end	
 
 	def get_merchant
 		@merchant = Merchant.find(params[:id])
@@ -11,7 +17,7 @@ class MerchantsController < ApplicationController
 	end	
 	
 	def show
-		
+		@merhant = current_merchant
 	end
 
 	def new
@@ -20,7 +26,8 @@ class MerchantsController < ApplicationController
 	end
 
 	def edit
-		@merchant = Merchant.find(current_merchant.id)
+		@params = params
+		@merchant = Merchant.find(params[:id])
 		@photo = @merchant.photos.new
 	end
 
@@ -47,6 +54,7 @@ class MerchantsController < ApplicationController
 	end
 
 	def destroy 
+		@merchant = current_merchant
 		@merchant.destroy
 		redirect_to root_path
 	end

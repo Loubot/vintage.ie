@@ -1,25 +1,26 @@
+<%= @params %>
 <div class="row" >
 	<div class="col-md-12">
-<div class="col-md-6">
-	<%= form_for [@merchant, @photo], remote: true, :html => {id:"my-awesome-dropzone", class:'dropzone' } do |f| %>
-      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-      <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group fallback">
-             <%= f.file_field :photo %>
-        </div>
-      </div>
-      
-      <div class="dz-message " data-dz-message>
-        <span class="col-xs-5 col-sm-5 col-md-5">Drag files or click here</span></div>
-      <div class="fallback">                       
-      </div> 
-      
-  <% end %>    
-</div>
-<div class="col-md-1"><button id="edit_form_save_button" class='btn btn-success'>Upload</button></div>
-	<div class="col-md-5">
-		<%= render 'form' %>
-	</div>
-	</div>
+    <div class="col-md-6">
+    	<%= form_for [@merchant, @photo], remote: true, :html => {id:"my-awesome-dropzone", class:'dropzone' } do |f| %>
+          <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group fallback">
+                 <%= f.file_field :photo %>
+            </div>
+          </div>
+          
+          <div class="dz-message " data-dz-message>
+            <span class="col-xs-5 col-sm-5 col-md-5">Drag files or click here</span></div>
+          <div class="fallback">                       
+          </div> 
+          
+      <% end %>    
+    </div>
+    <div class="col-md-1"><button id="edit_form_save_button" class='btn btn-success'>Upload</button></div>
+  	<div class="col-md-5">
+  		<%= render 'form' %>
+  	</div>
+  </div>
 	
 </div>
