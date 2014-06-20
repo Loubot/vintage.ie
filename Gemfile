@@ -38,7 +38,7 @@ gem 'tzinfo-data'
 
 gem 'devise'
 
-gem 'rmagick'
+# gem 'rmagick'
 
 
 # Use ActiveModel has_secure_password

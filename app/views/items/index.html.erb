@@ -5,8 +5,8 @@
 <% end %> 
 
 <div class="row">
-	<div class="col-md-1"></div>
-	<div class="col-md-6">
+	
+	<div class="col-md-6 col-md-offset-3">
 		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 	  <!-- Indicators -->
 	  <ol class="carousel-indicators">
@@ -24,7 +24,7 @@
 		  <div class="carousel-inner">
 	    	<% @shop_items_photos.each_with_index do |photo, index| %>
 					<div class="item <% if index == 0 %>active<% end %>">
-						<%= image_tag photo.photo.url(:thumb) %>
+						<%= image_tag photo.photo %>
 						<div class="carousel-caption">
 							..
 						</div>

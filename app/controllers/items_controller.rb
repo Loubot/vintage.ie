@@ -1,18 +1,23 @@
 class ItemsController < ApplicationController
 	before_action :authenticate_merchant!, only: [:update, :create, :new, :edit, :destroy]
+	before_action :correct_merchant?, only: [:update, :edit, :create, :new, :destroy]
+
+	def correct_merchant?
+		redirect_to shop_items_path(params[:shop_id]) unless current_merchant == Shop.find(params[:shop_id]).merchant
+	end
 
 	def index
 		if params[:shop_id]
 			@params = params
 			@shop = Shop.find(params[:shop_id])
 			@items = @shop.items
-			photos = []
+			@shop_items_photos = []
 			@items.each do |item|
 				item.photos.each do |photo|
 					photos << photo
 				end
 			end
-			@shop_items_photos = photos
+			@shop_items_photos
 		else
 			@shop_items_photos = Photo.all.where(imageable_type: 'Item')
 			@items = Item.all

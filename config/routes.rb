@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :merchants
+  devise_for :merchants, :controllers => { :registrations => 'registrations'}
   
   resources :merchants do
     resources :shops
@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   	resources :photos
   end
   
-  root to: 'merchants#edit', as: 'yourdetails'
+  root to: 'items#index'
+  match "*path" => "items#index", via: [:get, :post]  
 end

@@ -9,7 +9,8 @@ class MerchantsController < ApplicationController
 	end	
 
 	def get_merchant
-		@merchant = Merchant.find(params[:id])
+		@merchant = params[:id] ? Merchant.find(params[:id]) : Merchant.find(params[:merchant_id])
+		
 	end
 
 	def index
